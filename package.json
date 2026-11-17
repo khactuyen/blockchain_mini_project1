@@ -1,0 +1,15 @@
+{
+  "name": "community-proposal-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compile": "node scripts/compile.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "ganache": "ganache --server.host 127.0.0.1 --server.port 7545 --chain.chainId 1337 --wallet.totalAccounts 10 --logging.quiet",
+    "start": "node scripts/serve.mjs",
+    "test": "node --test --test-concurrency=1 tests/contract.test.mjs"
+  },
+  "dependencies": { "ethers": "6.17.0" },
+  "devDependencies": { "ganache": "7.9.2", "solc": "0.8.19" }
+}

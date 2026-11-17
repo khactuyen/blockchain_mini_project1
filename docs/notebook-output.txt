@@ -1,0 +1,133 @@
+Connected to Ganache and CommunityProposalBoard!
+Python: 3.11.7 | web3.py: 7.16.0
+Client: Ganache/v7.7.3/EthereumJS TestRPC/v7.7.3/ethereum-js
+RPC: http://127.0.0.1:7545
+Chain ID: 1337
+Contract: 0x1661710adE37BEEBb806aAA6643E4cd281d6F165
+ABI entries: 9
+Proposal count before demo: 3
+A - author : 0x195Cab71A742e0Bb60a756cDa133767Cf95E1073 | test ETH: 99.998183785736962817
+B - supporter : 0xA2C5a72040C6951aD1B83224685457802f33b528 | test ETH: 99.999900219080795522
+C - newcomer : 0x7C1cfe07cbdDc532061840591F58642EF6ebfE9D | test ETH: 99.999992654089983553
+
+
+Transaction: 0xb42ac341c2ae03617ace79026ea97c6f4fc8aa9ad36f75e4bcfced8c250f3a8a
+Block: 20 | status: 1 | gas: 193014
+Event: ProposalCreated {'proposalId': 3, 'author': '0x195Cab71A742e0Bb60a756cDa133767Cf95E1073', 'title': 'Trồng cây tại công viên'}
+PASS: A creates a proposal
+New proposal ID: 3
+{
+  "id": 3,
+  "author": "0x195Cab71A742e0Bb60a756cDa133767Cf95E1073",
+  "title": "Trồng cây tại công viên",
+  "description": "Trồng thêm cây để tạo bóng mát và cải thiện không gian xanh cho cộng đồng.",
+  "endorsementCount": 0,
+  "closed": false
+}
+
+
+Expected reason: Author cannot endorse own proposal
+Contract error: VM Exception while processing transaction: revert Author cannot endorse own proposal
+Rejected transaction: 0x7a75b250e61eeeff792c96344cad14adb5d5c64f950029ff9aaa75c5bb2d196a
+Block: 21 | status: 0 | gas: 28073
+PASS: Self endorsement rejected
+
+
+Transaction: 0x9e2feeac6f8aae8072505beea660d2997675865e06904cb9a3e419952e746906
+Block: 22 | status: 1 | gas: 74612
+Event: ProposalEndorsed {'proposalId': 3, 'supporter': '0xA2C5a72040C6951aD1B83224685457802f33b528', 'endorsementCount': 1}
+PASS: B endorses the proposal
+{
+  "id": 3,
+  "author": "0x195Cab71A742e0Bb60a756cDa133767Cf95E1073",
+  "title": "Trồng cây tại công viên",
+  "description": "Trồng thêm cây để tạo bóng mát và cải thiện không gian xanh cho cộng đồng.",
+  "endorsementCount": 1,
+  "closed": false
+}
+
+
+Expected reason: Already endorsed
+Contract error: VM Exception while processing transaction: revert Already endorsed
+Rejected transaction: 0x648fc6d448494a0752b6c8d299ac3345860b4f9b5b358b3d069d6ca61adffca4
+Block: 23 | status: 0 | gas: 30318
+PASS: Duplicate endorsement rejected
+
+
+Expected reason: Only author can close proposal
+Contract error: VM Exception while processing transaction: revert Only author can close proposal
+Rejected transaction: 0xfaa53faa170e70c620801922547e72ae7a54fbe6b6492744e3f27a9a9667307b
+Block: 24 | status: 0 | gas: 25860
+PASS: Unauthorized close rejected
+
+
+Transaction: 0x6ecc2fd310daec9eb33c762a5f8be44b28c9362effb7492483923ecccdc7c520
+Block: 25 | status: 1 | gas: 49550
+
+
+Event: ProposalClosed {'proposalId': 3, 'author': '0x195Cab71A742e0Bb60a756cDa133767Cf95E1073'}
+PASS: A closes the proposal
+{
+  "id": 3,
+  "author": "0x195Cab71A742e0Bb60a756cDa133767Cf95E1073",
+  "title": "Trồng cây tại công viên",
+  "description": "Trồng thêm cây để tạo bóng mát và cải thiện không gian xanh cho cộng đồng.",
+  "endorsementCount": 1,
+  "closed": true
+}
+
+
+Expected reason: Proposal is closed
+Contract error: VM Exception while processing transaction: revert Proposal is closed
+Rejected transaction: 0xf16950be667437b3f761eb08a7ea5609b72799a653e072fa51199895371c9ac0
+Block: 26 | status: 0 | gas: 25909
+PASS: Endorsement after closure rejected
+Expected reason: Proposal is closed
+Contract error: VM Exception while processing transaction: revert Proposal is closed
+
+
+Rejected transaction: 0x856f64a77335427e9f6bd14fe7d1f89d1dbc9815eae7b53884ccf3d1a00ebd71
+Block: 27 | status: 0 | gas: 27998
+PASS: Repeated closure rejected
+
+
+Expected reason: Proposal does not exist
+Contract error: VM Exception while processing transaction: revert Proposal does not exist
+Rejected transaction: 0xc1e26de25c3d881e8cac35f0758fa711d241cd6bc39f672ca130090dbf8eafe7
+Block: 28 | status: 0 | gas: 23735
+PASS: Unknown proposal rejected
+
+
+Expected reason: Title must be 1-120 bytes
+Contract error: VM Exception while processing transaction: revert Title must be 1-120 bytes
+Rejected transaction: 0x6ffba3335b2ba15855f1687645d31c2389cc1f602822b1a789882fb1731137ef
+Block: 29 | status: 0 | gas: 22700
+PASS: Empty title rejected
+
+
+PASS: Final state and endorsement mappings are correct
+
+
+{
+  "id": 3,
+  "author": "0x195Cab71A742e0Bb60a756cDa133767Cf95E1073",
+  "title": "Trồng cây tại công viên",
+  "description": "Trồng thêm cây để tạo bóng mát và cải thiện không gian xanh cho cộng đồng.",
+  "endorsementCount": 1,
+  "closed": true
+}
+========================================================================
+01. PASS | A creates a proposal
+02. PASS | Self endorsement rejected
+03. PASS | B endorses the proposal
+04. PASS | Duplicate endorsement rejected
+05. PASS | Unauthorized close rejected
+06. PASS | A closes the proposal
+07. PASS | Endorsement after closure rejected
+08. PASS | Repeated closure rejected
+09. PASS | Unknown proposal rejected
+10. PASS | Empty title rejected
+11. PASS | Final state and endorsement mappings are correct
+========================================================================
+RESULT: 11/11 checks passed.
+All transaction hashes, receipts and events above were obtained from Ganache.

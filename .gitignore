@@ -1,0 +1,15 @@
+node_modules/
+.npm-cache/
+.python-packages/
+artifacts/
+web/deployment.json
+deployment.json
+.venv/
+__pycache__/
+*.pyc
+.env
+tmp/
+test-results/
+playwright-report/
+
+.ipynb_checkpoints/
